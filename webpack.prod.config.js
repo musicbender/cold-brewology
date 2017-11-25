@@ -1,13 +1,12 @@
 const webpack = require('webpack');
 const path = require('path');
-const OfflinePlugin = require('offline-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const config = {
   devtool: 'cheap-module-source-map',
   resolve: {
-    extensions: ['.js', '.jsx', 'json'],
+    extensions: ['.js', 'json'],
   },
   entry: {
     index: [path.join(__dirname, '/src/index.js')],
@@ -53,19 +52,6 @@ const config = {
         'ONSERVER': false,
         'LIVE:': JSON.stringify(process.env.LIVE)
       }
-    }),
-    new OfflinePlugin({
-      publicPath: '/',
-      ServiceWorker: {
-        navigateFallbackURL: '/offline.html'
-      },
-      externals: [
-        '/',
-        'static/offline.html',
-        'static/manifest.json',
-        'https://fonts.googleapis.com/icon?family=Material+Icons',
-        'https://fonts.googleapis.com/css?family=Slabo+27px'
-      ]
     }),
     new CopyWebpackPlugin([
       { from: 'static/*', to: './', flatten: true},

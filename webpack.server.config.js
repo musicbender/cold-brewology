@@ -16,7 +16,7 @@ module.exports = {
     alias: {
 	     "~": path.join(__dirname, './src'),
 	  },
-    extensions: ['.js', '.jsx', '.json']
+    extensions: ['.js', '.json']
   },
   entry: path.join(__dirname, './server/server.js'),
   output: {
@@ -36,7 +36,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: 'css-loader' 
+        loader: 'css-loader'
       }
     ],
   },
@@ -47,7 +47,6 @@ module.exports = {
         'ONSERVER': "true",
         'LIVE': process.env.LIVE,
         'PORT': process.env.PORT,
-        'HTTP_PORT': process.env.HTTP_PORT,
       }
     }),
     new CopyWebpackPlugin([

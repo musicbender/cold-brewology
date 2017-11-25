@@ -1,12 +1,11 @@
 const webpack = require('webpack');
 const path = require('path');
-const OfflinePlugin = require('offline-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const config = {
   devtool: 'eval',
   resolve: {
-    extensions: ['.js', '.jsx', 'json'],
+    extensions: ['.js', 'json'],
   },
   entry: {
     index: [path.join(__dirname, '/src/index.js')],
@@ -52,7 +51,7 @@ const config = {
       filename: 'index.html',
       inject: 'body',
       template: 'server/views/index.pug',
-      title: 'Mug Math',
+      title: 'Cold Brewology',
     }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',

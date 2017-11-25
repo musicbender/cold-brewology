@@ -1,7 +1,7 @@
 {
   "name": "cold-brewology",
   "version": "1.0.0",
-  "description": "",
+  "description": "The science and art of making delicious cold brew coffee",
   "main": "index.js",
   "directories": {
     "test": "test"
