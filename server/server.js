@@ -13,9 +13,9 @@ import App from '../src/containers/app';
 import reducers from '../src/reducers';
 import config from './config';
 const criticalCSS = require('./views/critical.css').toString();
-require('babel-core/register')({
-    presets: ['env', 'react']
-});
+// require('babel-core/register')({
+//     presets: ['env', 'react']
+// });
 
 console.log(process.env.ONSERVER);
 const app = new express();

@@ -27,7 +27,7 @@ module.exports = {
     loaders: [
       {
         test: /\.jsx?$/,
-        loaders: ["babel-loader?presets[]=es2015&presets[]=stage-0&presets[]=react"],
+        loaders: ["babel-loader?presets[]=env&presets[]=react"],
         exclude: /(node_modules|bower_components)/,
       },
       {
