@@ -26,7 +26,7 @@ const config = {
       },
       {
         test: /\.scss$/,
-        loader: "style-loader!css-loader!autoprefixer-loader!sass-loader",
+        loader: "style-loader!css-loader!sass-loader",
       },
       {
         test: /\.css$/,
