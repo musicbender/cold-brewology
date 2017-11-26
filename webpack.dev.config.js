@@ -35,7 +35,7 @@ const config = {
       },
       {
         test: /\.css$/,
-        loader: "style-loader!css-loader",
+        loader: "css-loader",
       },
       {
         test: /\.pug/,
@@ -52,13 +52,13 @@ const config = {
         'NODE_ENV': JSON.stringify('development')
       },
     }),
-    new HtmlWebpackPlugin({
-      template: path.join(__dirname, '/src/index.html'),
-      filename: 'index.html',
-      inject: 'body',
-      template: 'server/views/index.pug',
-      title: 'Cold Brewology',
-    }),
+    // new HtmlWebpackPlugin({
+    //   template: path.join(__dirname, '/src/index.html'),
+    //   filename: 'index.html',
+    //   inject: 'body',
+    //   template: 'server/views/index.pug',
+    //   title: 'Cold Brewology',
+    // }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       minChunks: Infinity,

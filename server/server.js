@@ -45,7 +45,9 @@ if (process.env.NODE_ENV === 'development') {
 app.use(express.static(path.join(__dirname, 'public/')));
 app.use(bodyParser.json());
 
+console.log('about to render?');
 app.use((req, res) => {
+  console.log('server side rendering...');
   const store = createStore(reducers);
   const context = {};
   const html = renderToString(
@@ -62,7 +64,6 @@ app.use((req, res) => {
   }
 
   const preloadedState = store.getState();
-  const testContent = 'wut wut wut';
   res
     .set('Content-Type', 'text/html')
     .status(200)
@@ -70,8 +71,7 @@ app.use((req, res) => {
       html,
       preloadedState,
       criticalCSS,
-      onServer: process.env.ONSERVER,
-      testContent
+      onServer: process.env.ONSERVER
     });
 });
 
