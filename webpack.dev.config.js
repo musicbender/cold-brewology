@@ -4,17 +4,22 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const config = {
   devtool: 'eval',
+  target: 'web',
   resolve: {
-    extensions: ['.js', 'json'],
+    extensions: ['.js', '.json'],
   },
   entry: {
-    index: [path.join(__dirname, '/src/index.js')],
-    vendor: ['react', 'react-dom'],
+    index: [
+      'webpack-hot-middleware/client',
+      'webpack/hot/only-dev-server',
+      path.join(__dirname, '/src/index.js'),
+    ],
+    vendor: ['react', 'react-dom', 'react-router-dom'],
   },
   output: {
     path: path.join(__dirname, '/dist'),
     filename: 'dist.js',
-    publicPath: '/',
+    publicPath: 'http://localhost:3001',
   },
   module: {
     rules: [
@@ -39,6 +44,7 @@ const config = {
     ],
   },
   plugins: [
+    new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         'ONSERVER': false,
@@ -58,12 +64,12 @@ const config = {
       minChunks: Infinity,
       filename: 'vendor.js',
     }),
-  ],
-  devServer: {
-    historyApiFallback: true,
-    port: 3777,
-  },
-  watch: true,
+  ]
+  // devServer: {
+  //   historyApiFallback: true,
+  //   port: 3777,
+  // },
+  // watch: true,
 };
 
 module.exports = config;

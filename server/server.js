@@ -13,21 +13,39 @@ import App from '../src/containers/app';
 import reducers from '../src/reducers';
 import config from './config';
 const criticalCSS = require('./views/critical.css').toString();
-// require('babel-core/register')({
-//     presets: ['env', 'react']
-// });
 
-console.log(process.env.ONSERVER);
+// webpack
+import webpack from 'webpack';
+import wpConfig from '../webpack.dev.config';
+import webpackDevMiddleware from 'webpack-dev-middleware';
+import webpackHotMiddleware from 'webpack-hot-middleware';
+
+// initialization
 const app = new express();
 const viewDir = process.env.LIVE ? 'dist/views' : 'server/views';
+const PORT = process.env.LIVE ? config.LIVE_PORT : config.DEV_PORT;
 
 app.set('view engine', 'pug');
 app.set('views', viewDir);
 
+// Run Webpack dev server in development mode
+if (process.env.NODE_ENV === 'development') {
+  const compiler = webpack(wpConfig);
+  app.use(webpackDevMiddleware(compiler, {
+    noInfo: true,
+    publicPath: wpConfig.output.publicPath,
+    stats: {colors: true}
+  }));
+  app.use(webpackHotMiddleware(compiler, {
+    log: console.log
+  }));
+}
+
+// Middlewares
 app.use(express.static(path.join(__dirname, 'public/')));
 app.use(bodyParser.json());
 
-app.get('*', (req, res) => {
+app.use((req, res) => {
   const store = createStore(reducers);
   const context = {};
   const html = renderToString(
@@ -44,6 +62,7 @@ app.get('*', (req, res) => {
   }
 
   const preloadedState = store.getState();
+  const testContent = 'wut wut wut';
   res
     .set('Content-Type', 'text/html')
     .status(200)
@@ -51,27 +70,12 @@ app.get('*', (req, res) => {
       html,
       preloadedState,
       criticalCSS,
-      onServer: process.env.ONSERVER
+      onServer: process.env.ONSERVER,
+      testContent
     });
 });
 
-if (!process.env.LIVE) {
-  const options = {
-      key: fs.readFileSync(config.DEV_KEY),
-      cert: fs.readFileSync(config.DEV_CERT),
-      requestCert: false,
-      rejectUnauthorized: false
-  };
-
-  https.createServer(options, app).listen(config.DEV_PORT, () => {
-    console.log(`Cold Brewology local server started at port ${config.DEV_PORT}`);
-  });
-  http.createServer(app).listen(config.DEV_HTTP_PORT, () => {
-    console.log(`app at local server at port ${config.DEV_HTTP_PORT}`);
-  })
-} else {
-  app.listen(config.LIVE_PORT, err => {
-    if (err) { console.error(err); }
-    console.log(`Cold Brewology now live at ${config.LIVE_PORT}!`);
-  });
-}
+app.listen(PORT, err => {
+  if (err) { console.error(err); }
+  console.log(`Cold Brewology now liveee at ${PORT}!`);
+});
