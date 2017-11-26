@@ -12,7 +12,7 @@ import { StaticRouter } from 'react-router';
 import App from '../src/containers/app';
 import reducers from '../src/reducers';
 import config from './config';
-const criticalCSS = require('./views/critical.css').toString();
+import criticalCSS from './views/critical.css';
 
 // webpack
 import webpack from 'webpack';
@@ -45,7 +45,7 @@ if (process.env.NODE_ENV === 'development') {
 app.use(express.static(path.join(__dirname, 'public/')));
 app.use(bodyParser.json());
 
-console.log('about to render?');
+// server side rendering
 app.use((req, res) => {
   console.log('server side rendering...');
   const store = createStore(reducers);
@@ -71,7 +71,6 @@ app.use((req, res) => {
       html,
       preloadedState,
       criticalCSS,
-      onServer: process.env.ONSERVER
     });
 });
 
