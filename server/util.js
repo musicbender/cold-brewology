@@ -1,5 +1,5 @@
 module.exports = {
-  responseClient(res, httpCode = 500, code = 3, message='success', data={}) {
+  apiResponse(res, httpCode = 500, code = 3, message='success', data={}) {
       let responseData = {};
       responseData.code = code;
       responseData.message = message;
