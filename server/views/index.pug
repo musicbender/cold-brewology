@@ -10,7 +10,7 @@ html.no-js(lang='en')
       !{criticalCSS}
   body.preload
     script.
-      window.__INITIAL_STATE__ = !{JSON.stringify(preloadedState)}
+      window.__PRELOADED_STATE__ = !{JSON.stringify(preloadedState)}
     //if lt IE 8
       p.browserupgrade
         | You are using an

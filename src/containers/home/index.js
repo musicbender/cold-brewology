@@ -5,10 +5,15 @@ class Home extends Component {
     super(props);
   }
 
+  handleClick(e) {
+    e.preventDefault();
+    console.log('clicked');
+  }
+
   render() {
     return (
       <div>
-        homeeeee
+        <a className="click-test" onClick={(e) => this.handleClick(e)}>CLICK</a>
       </div>
     );
   }

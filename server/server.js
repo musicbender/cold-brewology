@@ -12,6 +12,7 @@ import { StaticRouter } from 'react-router';
 import App from '../src/containers/app';
 import reducers from '../src/reducers';
 import config from './config';
+import api from './api';
 import criticalCSS from './views/critical.css';
 
 // webpack
@@ -45,6 +46,9 @@ if (process.env.NODE_ENV === 'development') {
 app.use(express.static(path.join(__dirname, 'public/')));
 app.use(bodyParser.json());
 
+// API routes
+app.use('/api', api);
+
 // server side rendering
 app.use((req, res) => {
   console.log('server side rendering...');
@@ -76,5 +80,5 @@ app.use((req, res) => {
 
 app.listen(PORT, err => {
   if (err) { console.error(err); }
-  console.log(`Cold Brewology now liveee at ${PORT}!`);
+  console.log(`Cold Brewology now live at ${PORT}!`);
 });
