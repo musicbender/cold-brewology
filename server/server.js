@@ -30,13 +30,21 @@ const PORT = process.env.LIVE ? config.LIVE_PORT : config.DEV_PORT;
 app.set('view engine', 'pug');
 app.set('views', viewDir);
 
-// connect to database
-mongoose.connect(`mongodb://${config.DB_HOST}:${config.DB_PORT}/cold-brewology`, (err) => {
-  if (err) {
-    console.error(err);
-    return;
-  }
-  
+// connect to database and start server
+mongoose.Promise = global.Promise;
+mongoose.connect(`mongodb://${config.DB_HOST}:${config.DB_PORT}/cold-brewology`, {
+  userMongoClient: true,
+  keepAlive: true,
+  reconnectTries: Number.MAX_VALUE
+});
+const db = mongoose.connection;
+
+db.on('error', (err) => {
+  console.error(err);
+})
+
+db.once('open', () => {
+  console.log('mongo connected...');
   app.listen(PORT, err => {
     if (err) { console.error(err); }
     console.log(`Cold Brewology now live at ${PORT}!`);
