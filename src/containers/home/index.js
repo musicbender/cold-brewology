@@ -11,7 +11,7 @@ class Home extends Component {
 
   handleClick(e) {
     e.preventDefault();
-    axios.get('/api/getArticle')
+    axios.get('/api/get-article')
       .then(res => {
         console.log(res);
         this.setState({

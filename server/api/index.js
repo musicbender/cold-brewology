@@ -2,7 +2,7 @@ import express from 'express';
 import { apiResponse } from '../util';
 const router = express.Router();
 
-router.get('/getArticle', (req, res) => {
+router.get('/get-article', (req, res) => {
   const data = {
     worked: 'yup',
     waddup: 'brah',

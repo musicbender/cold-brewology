@@ -5,6 +5,7 @@ import fs from 'fs';
 import path from 'path';
 import bodyParser from 'body-parser';
 import React from 'react';
+import mongoose from 'mongoose';
 import { renderToString } from 'react-dom/server';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
@@ -28,6 +29,19 @@ const PORT = process.env.LIVE ? config.LIVE_PORT : config.DEV_PORT;
 
 app.set('view engine', 'pug');
 app.set('views', viewDir);
+
+// connect to database
+mongoose.connect(`mongodb://${config.DB_HOST}:${config.DB_PORT}/cold-brewology`, (err) => {
+  if (err) {
+    console.error(err);
+    return;
+  }
+  
+  app.listen(PORT, err => {
+    if (err) { console.error(err); }
+    console.log(`Cold Brewology now live at ${PORT}!`);
+  });
+})
 
 // Run Webpack dev server in development mode
 if (process.env.NODE_ENV === 'development') {
@@ -76,9 +90,4 @@ app.use((req, res) => {
       preloadedState,
       criticalCSS,
     });
-});
-
-app.listen(PORT, err => {
-  if (err) { console.error(err); }
-  console.log(`Cold Brewology now live at ${PORT}!`);
 });
