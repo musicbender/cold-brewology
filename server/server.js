@@ -33,9 +33,7 @@ app.set('views', viewDir);
 // connect to database and start server
 mongoose.Promise = global.Promise;
 mongoose.connect(`mongodb://${config.DB_HOST}:${config.DB_PORT}/cold-brewology`, {
-  userMongoClient: true,
-  keepAlive: true,
-  reconnectTries: Number.MAX_VALUE
+  useMongoClient: true,
 });
 const db = mongoose.connection;
 
