@@ -6,19 +6,32 @@ class PostTest extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      input: null
+      title: '',
+      post_id: ''
     }
   }
 
-  handleChange(e) {
+  handleChange(e, type) {
     e.preventDefault();
-    this.setState({ input: e.target.value });
+    switch(type) {
+      case "title":
+        this.setState({ title: e.target.value });
+        break;
+      case "post":
+        this.setState({ post_id: e.target.value });
+        break;
+      default:
+        break;
+    }
   }
 
   handleSubmit(e) {
     e.preventDefault();
+    const { title, post_id } = this.state;
+
     axios.post('/api/test-post', {
-      post_id: this.state.input
+      title,
+      post_id,
     })
       .then(res => {
         console.log(res);
@@ -31,9 +44,13 @@ class PostTest extends Component {
   render() {
     return (
       <div>
+        <p>Add a new test post:</p>
         <form action="" onSubmit={(e) => this.handleSubmit(e)}>
-            <input onChange={e => this.handleChange(e)}type="text" name="post_id"/>
-            <input type="submit" />
+          <label>Title</label>
+          <input onChange={e => this.handleChange(e, 'title')} id="title" type="text" name="title"/>
+          <label>Post ID</label>
+          <input onChange={e => this.handleChange(e, 'post')} id="post_id" type="text" name="post_id"/>
+          <input type="submit" />
         </form>
       </div>
     );
