@@ -6,15 +6,15 @@ const ArticleSchema = new Schema({
     type: String,
     default: 'Pat Jacobs'
   },
+  date: {
+    type: Date,
+    default: Date.now
+  },
   body: String,
   comments: [{
     body: String,
     date: Date
   }],
-  date: {
-    type: Date,
-    default: Date.now
-  },
   hidden: Boolean,
   likes: Number
 });
@@ -25,3 +25,5 @@ ArticleSchema.method('like', (like, cb) => {
 });
 
 const Article = mongoose.model('Article', ArticleSchema);
+
+export default Article;
