@@ -1,7 +1,7 @@
 import express from 'express';
 import pug from 'pug';
 import path from 'path';
-import { Article } from '../modals/articles';
+const Article = require('../modals/articles');
 import { apiResponse } from '../util';
 const router = express.Router();
 
@@ -28,7 +28,6 @@ router.post('/test-post', (req, res) => {
     if (err) console.log(err);
     console.log(results);
   })
-
 
   apiResponse(res, 200, 0, 'success', body);
 })

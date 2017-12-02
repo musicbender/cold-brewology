@@ -1,5 +1,7 @@
-import mongoose, { Schema } from 'mongoose';
+import mongoose from 'mongoose';
 import CommentsSchema from './comments';
+
+const Schema = mongoose.Schema;
 
 const ArticleSchema = new Schema({
   title:  String,
@@ -30,4 +32,4 @@ ArticleSchema.method('like', (like, cb) => {
 
 const Article = mongoose.model('Article', ArticleSchema);
 
-export default Article;
+module.exports = Article;
