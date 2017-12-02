@@ -65,14 +65,13 @@ if (process.env.NODE_ENV === 'development') {
 // Middlewares
 app.use(express.static(path.join(__dirname, 'public/')));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true })); 
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // API routes
 app.use('/api', api);
 
 // server side rendering
 app.use((req, res) => {
-  console.log('server side rendering...');
   const store = createStore(reducers);
   const context = {};
   const html = renderToString(

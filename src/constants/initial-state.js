@@ -1,22 +1,22 @@
 const initialState = {
   articles: {
-    postsList: {
-      posts: [],
+    articlesList: {
+      articles: [],
       error: null,
       loading: false
     },
-  	newPost: {
-      post: null,
+  	newArticle: {
+      article: null,
       error: null,
       loading: false
     },
-  	activePost: {
-      post: null,
+  	activeArticle: {
+      article: null,
       error: null,
       loading: false
     },
-  	deletedPost: {
-      post: null,
+  	deletedArticle: {
+      article: null,
       error: null,
       loading: false
     },

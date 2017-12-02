@@ -7,12 +7,14 @@ import {
   VALIDATE_ARTICLE_FIELDS,VALIDATE_ARTICLE_FIELDS_SUCCESS, VALIDATE_ARTICLE_FIELDS_FAILURE, RESET_ARTICLE_FIELDS
 } from '../constants';
 
-const ROOT_URL = location.href.indexOf('localhost') > 0 ? 'http://localhost:3001/api' : '/api';
+const API_URL = (typeof window === 'undefined' || process.env.NODE_ENV === 'test') ?
+  process.env.BASE_URL || (`http://localhost:${process.env.PORT || '3001'}/api`) :
+  '/api';
 
 export function fetchArticles() {
-  request = axios({
+  const request = axios({
     method: 'get',
-    url: `${ROOT_URL}/fetch-articles`,
+    url: `${API_URL}/get-articles`,
     headers: [],
   });
 

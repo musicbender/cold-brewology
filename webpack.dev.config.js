@@ -47,29 +47,19 @@ const config = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
-        'ONSERVER': false,
         'LIVE': false,
-        'NODE_ENV': JSON.stringify('development')
+        'CLIENT': JSON.stringify(true),
+        'NODE_ENV': JSON.stringify('development'),
+        'PORT': 3001,
+        'BASE_URL': JSON.stringify('http://localhost'),
       },
     }),
-    // new HtmlWebpackPlugin({
-    //   template: path.join(__dirname, '/src/index.html'),
-    //   filename: 'index.html',
-    //   inject: 'body',
-    //   template: 'server/views/index.pug',
-    //   title: 'Cold Brewology',
-    // }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       minChunks: Infinity,
       filename: 'vendor.js',
     }),
   ]
-  // devServer: {
-  //   historyApiFallback: true,
-  //   port: 3777,
-  // },
-  // watch: true,
 };
 
 module.exports = config;

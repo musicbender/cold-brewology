@@ -5,13 +5,13 @@ const Article = require('../modals/articles');
 import { apiResponse } from '../util';
 const router = express.Router();
 
-router.get('/get-article', (req, res) => {
-  Article.find({}, null, {sort: (date: -1)}, (err, articles) => {
-    if (err) { console.error(err); }
+router.get('/get-articles', (req, res) => {
+  Article.find({}, null, {sort: {date: -1}}, (err, articles) => {
+    if (err) {
+      apiResponse(res, 400, 0, 'success', err);
+    }
     apiResponse(res, 200, 0, 'success', articles);
   });
-
-  apiResponse(res, 200, 0, 'success', 'article data sent');
 });
 
 router.post('/test-post', (req, res) => {
