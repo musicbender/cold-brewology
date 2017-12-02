@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
+import Header from '../../components/main-header';
+import HomeCTABar from '../../components/home-cta-bar';
+import ArticleList from '../../components/article-list';
+import Footer from '../../components/footer';
 import axios from 'axios';
+import './home.scss';
 
 class Home extends Component {
   constructor(props) {
@@ -24,20 +29,14 @@ class Home extends Component {
   }
 
   render() {
-    const { goats, waddup, worked } = this.state.articleData;
     return (
-      <div>
-        <a className="click-test" onClick={(e) => this.handleClick(e)}>CLICK</a>
-        {
-          this.state.articleData &&
-          <div>
-            <div>Goats: {goats}</div>
-            <div>Waddup: {waddup}</div>
-            <div>Did it work? Yes, it {worked}</div>
-          </div>
-        }
+      <div className="home">
+        <Header />
+        <HomeCTABar />
+        <ArticleList />
       </div>
     );
   }
 }
+
 export default Home;

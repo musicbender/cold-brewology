@@ -16,18 +16,18 @@ router.get('/get-article', (req, res) => {
 
 router.post('/test-post', (req, res) => {
   const bodyFile = path.join(__dirname, '../views/posts/') + req.body.post_id + '.pug';
-  const body = pug.renderFile(bodyFile) || 'file does not exist';
+  const body = pug.renderFile(bodyFile);
 
   const post = new Article({
     title: req.body.title,
     author: 'Pat Jacobs',
     body
-  })
+  });
 
   post.save((err, results) => {
     if (err) console.log(err);
     console.log(results);
-  })
+  });
 
   apiResponse(res, 200, 0, 'success', body);
 })
