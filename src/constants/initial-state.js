@@ -1,4 +1,4 @@
-const initialState = {
+export default {
   articles: {
     articlesList: {
       articles: [],
@@ -22,5 +22,3 @@ const initialState = {
     },
   },
 }
-
-export default initialState;
