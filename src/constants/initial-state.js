@@ -1,7 +1,7 @@
 export default {
   articles: {
     articlesList: {
-      articles: [],
+      articles: null,
       error: null,
       loading: false
     },

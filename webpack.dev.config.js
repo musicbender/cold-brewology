@@ -3,7 +3,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const config = {
-  devtool: 'eval',
+  devtool: 'cheap-module-source-map',
   target: 'web',
   resolve: {
     extensions: ['.js', '.json'],

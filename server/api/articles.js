@@ -6,7 +6,7 @@ import { apiResponse } from '../util';
 const router = express.Router();
 
 router.get('/get-articles', (req, res) => {
-  Article.find({}, null, {sort: {date: -1}}, (err, articles) => {
+  Article.find({}, null, {sort: {date: -1}}).lean().exec((err, articles) => {
     if (err) {
       apiResponse(res, 400, 1, 'error', err);
     }
@@ -14,6 +14,7 @@ router.get('/get-articles', (req, res) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'GET');
     res.header('Access-Control-Allow-Headers', 'Content-Type');
+    res.header('Content-Type', 'application/json');
 
     apiResponse(res, 200, 0, 'success', articles);
   });
