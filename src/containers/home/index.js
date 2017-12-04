@@ -19,17 +19,20 @@ class Home extends Component {
   }
 
   render() {
+    const { articles, error, loading } = this.props;
     if (this.props.articles) {
-      // console.log(this.props.articles);
       console.log(this.props.articles[0].author);
     }
-
 
     return (
       <div className="home">
         <Header />
         <HomeCTABar />
-        <ArticleList />
+        <ArticleList 
+          articles={articles}
+          error={error}
+          loading={loading}
+        />
       </div>
     );
   }
