@@ -12,9 +12,7 @@ const API_URL = (typeof window === 'undefined' || process.env.NODE_ENV === 'test
   '/api';
 
 export function fetchArticles(page) {
-	console.log(page);
 	const request = API.get(`/get-articles/${page}`);
-
   return {
     type: FETCH_ARTICLES,
     payload: request,

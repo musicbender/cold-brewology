@@ -1,0 +1,11 @@
+@import '../../style/helpers/variables';
+@import '../../style/helpers/mixins';
+
+.articles-list {
+  [class^="article-"] {
+    @include box-shadow(2);
+    position: relative;
+    margin: 1em;
+    padding: 1em;
+  }
+}

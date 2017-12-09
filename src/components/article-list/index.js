@@ -1,4 +1,5 @@
 import React from 'react';
+import './article-list.scss';
 
 export default (props) => {
   const { articles, error, loading } = props;
@@ -7,7 +8,7 @@ export default (props) => {
       {
         articles.map((article,i) => {
           return (
-            <div className={`article-container-${i + 1}`} key={Math.random()}>
+            <div className={`article-${i + 1}`} key={Math.random()}>
               <h2>{article.title}</h2>
               <p>{article.date}</p>
               <p>{article.author}</p>
@@ -18,6 +19,7 @@ export default (props) => {
       }
     </div>
   );
+
   return (
      <section className="articles-list-section">
        { loading && <p>Loading...</p> }

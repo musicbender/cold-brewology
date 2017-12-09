@@ -8,7 +8,7 @@ const router = express.Router();
 router.get('/get-articles/:page', (req, res) => {
   const limit =  8;
   const page = Math.max(0, req.params.page);
-  console.log(req.params.page);
+
   Article.find({}, null, {sort: {date: -1}})
     .limit(limit)
     .skip(limit * page)
@@ -18,10 +18,11 @@ router.get('/get-articles/:page', (req, res) => {
         apiResponse(res, 400, 1, 'error', err);
       }
 
-      // res.header('Access-Control-Allow-Origin', '*');
-      res.header('Access-Control-Allow-Methods', 'GET');
-      res.header('Access-Control-Allow-Headers', 'Content-Type');
-      res.header('Content-Type', 'application/json');
+      res.set({
+        'Access-Control-Allow-Methods': 'GET',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Content-Type': 'application/json',
+      });
 
       apiResponse(res, 200, 0, 'success', articles);
   });

@@ -20,10 +20,6 @@ class Home extends Component {
 
   render() {
     const { articles, error, loading } = this.props;
-    if (this.props.articles) {
-      console.log(this.props.articles[0].author);
-    }
-
     return (
       <div className="home">
         <Header />
