@@ -15,7 +15,7 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchArticles();
+    this.props.fetchArticles(0);
   }
 
   render() {
@@ -28,7 +28,7 @@ class Home extends Component {
       <div className="home">
         <Header />
         <HomeCTABar />
-        <ArticleList 
+        <ArticleList
           articles={articles}
           error={error}
           loading={loading}
@@ -49,8 +49,8 @@ const mapStateToProps = ({ articles }) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchArticles: () => {
-      dispatch(fetchArticles())
+    fetchArticles: (page) => {
+      dispatch(fetchArticles(page))
         .then((result) => {
           const { payload } = result;
           if (payload && payload.status !== 200) {

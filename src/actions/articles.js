@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { API } from '../constants/config';
 import {
 	FETCH_ARTICLES, FETCH_ARTICLES_SUCCESS, FETCH_ARTICLES_FAILURE, RESET_ARTICLES,
 	FETCH_ARTICLE, FETCH_ARTICLE_SUCCESS,  FETCH_ARTICLE_FAILURE, RESET_ACTIVE_ARTICLE,
@@ -11,12 +11,9 @@ const API_URL = (typeof window === 'undefined' || process.env.NODE_ENV === 'test
   process.env.BASE_URL || (`http://localhost:${process.env.PORT || '3001'}/api`) :
   '/api';
 
-export function fetchArticles() {
-  const request = axios({
-    method: 'get',
-    url: `${API_URL}/get-articles`,
-    headers: [],
-  });
+export function fetchArticles(page) {
+	console.log(page);
+	const request = API.get(`/get-articles/${page}`);
 
   return {
     type: FETCH_ARTICLES,
