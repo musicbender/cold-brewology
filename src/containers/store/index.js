@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
 
-class Article extends Component {
+class Store extends Component {
   constructor(props) {
     super(props);
   }
 
   render() {
     return (
-      <div>
+      <div className={`store`}>
 
       </div>
     );
   }
 }
-
-export default Article;
+export default Store;

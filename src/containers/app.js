@@ -7,6 +7,9 @@ import Footer from '../components/footer';
 
 //Pages
 import Home from './home';
+import Brewers from '../components/brewers';
+import Books from '../components/books';
+import Accessories from '../components/accessories';
 import TestPost from '../components/test-post'
 
 class App extends Component {
@@ -19,6 +22,9 @@ class App extends Component {
       <div>
         <NavBar />
         <Route exact path="/" component={Home} />
+        <Route path="/brewers" component={Brewers} />
+        <Route path="/books" component={Books} />
+        <Route path="/accessories" component={Accessories} />
         <Route exact path="/post-tester" component={TestPost} />
         <Footer />
       </div>
