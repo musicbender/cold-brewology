@@ -1,0 +1,17 @@
+.nav-bar {
+  > .nav-links {
+    list-style: none;
+    > li {
+      display: inline-block;
+      margin: 0.2em 0.5em;
+      > a {
+        font-size: 1em;
+        text-decoration: none;
+        &:hover,
+        &:focus {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
