@@ -1,10 +1,10 @@
 import React from 'react';
-import Store from '../../containers/store';
+import Shop from '../../containers/shop';
 
 export default (props) => {
   return (
      <div>
-       <Store />
+       <Shop />
      </div>
   );
 }

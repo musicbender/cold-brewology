@@ -3,22 +3,29 @@ export default {
     articlesList: {
       articles: null,
       error: null,
-      loading: false
+      loading: false,
     },
   	newArticle: {
       article: null,
       error: null,
-      loading: false
+      loading: false,
     },
   	activeArticle: {
       article: null,
       error: null,
-      loading: false
+      loading: false,
     },
   	deletedArticle: {
       article: null,
       error: null,
-      loading: false
+      loading: false,
     },
   },
+  store: {
+    storeList: {
+      items: null,
+      error: null,
+      loading: false,
+    }
+  }
 }

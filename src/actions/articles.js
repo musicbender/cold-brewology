@@ -7,10 +7,6 @@ import {
   VALIDATE_ARTICLE_FIELDS,VALIDATE_ARTICLE_FIELDS_SUCCESS, VALIDATE_ARTICLE_FIELDS_FAILURE, RESET_ARTICLE_FIELDS
 } from '../constants';
 
-const API_URL = (typeof window === 'undefined' || process.env.NODE_ENV === 'test') ?
-  process.env.BASE_URL || (`http://localhost:${process.env.PORT || '3001'}/api`) :
-  '/api';
-
 export function fetchArticles(page) {
 	const request = API.get(`/get-articles/${page}`);
   return {
