@@ -6,7 +6,7 @@ const config = {
   devtool: 'cheap-module-source-map',
   target: 'web',
   resolve: {
-    extensions: ['.js', '.json', 'scss'],
+    extensions: ['.js', '.json'],
   },
   entry: {
     index: [
@@ -24,7 +24,7 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.jsx*$/,
         include: path.join(__dirname, '/src'),
         loader: "babel-loader",
         exclude: /node_modules/,
