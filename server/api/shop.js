@@ -9,19 +9,16 @@ const router = express.Router();
 const APAC = new OperationHelper(config.APAC);
 
 router.get('/get-shop/:type/:page', (req, res) => {
-    APAC.execute('ItemLookup', {
-      ItemId: products[req.params.type],
-      idType: 'ASIN',
-    })
-    .then((data) => {
-      apiResponse(res, 200, 0, 'success', data);
-    })
-    .catch((err) => {
-      apiResponse(res, 500, 0, 'error', err);
-    })
-
-
-
+  APAC.execute('ItemLookup', {
+    ItemId: products[req.params.type],
+    idType: 'ASIN',
+  })
+  .then((data) => {
+    apiResponse(res, 200, 0, 'success', data);
+  })
+  .catch((err) => {
+    apiResponse(res, 500, 0, 'error', err);
+  });
 });
 
 export default router;

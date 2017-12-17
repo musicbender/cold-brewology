@@ -43,11 +43,11 @@ const mapStateToProps = ({ articles }) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    fetchArticles: (page) => {
+    fetchArticles: page => {
       dispatch(fetchArticles(page))
-        .then((result) => {
+        .then(result => {
           const { payload } = result;
           if (payload && payload.status !== 200) {
             dispatch(fetchArticlesFailure(payload.data.message));

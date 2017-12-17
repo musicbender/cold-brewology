@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { fetchShop, fetchShopSuccess, fetchShopFailure } from '../../actions/shop';
 import { APAC, API } from '../../constants/config';
 
 class Store extends Component {
@@ -7,21 +10,52 @@ class Store extends Component {
   }
 
   componentDidMount() {
-    API.get('/get-shop/brewers/1')
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      })
+    const { fetchShop, shopType } = this.props;
+    this.props.fetchShop(shopType, 1);
   }
 
   render() {
-    return (
-      <div className={`store`}>
+    const { shopType, items } = this.props;
+    const renderShop = (
+      <div className="shop-container" key={Math.random()}>
+        shop
+      </div>
+    )
 
+    console.log(items);
+
+    return (
+      <div className={`shop-${shopType}`}>
+        <h2>{shopType}</h2>
+        { renderShop }
       </div>
     );
   }
 }
-export default Store;
+
+const mapStateToProps = ({ shop }) => {
+  const { items, loading, error } = shop.shopList;
+  return {
+    items,
+    loading,
+    error,
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchShop: (type, page) => {
+      dispatch(fetchShop(type, page))
+        .then((result) => {
+          const { payload } = result;
+          if (payload && payload.status !== 200) {
+            dispatch(fetchShopFailure(payload.data.message));
+          } else {
+            dispatch(fetchShopSuccess(payload.data.data));
+          }
+        })
+    }
+  }
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Store));

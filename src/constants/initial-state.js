@@ -21,8 +21,8 @@ export default {
       loading: false,
     },
   },
-  store: {
-    storeList: {
+  shop: {
+    shopList: {
       items: null,
       error: null,
       loading: false,
