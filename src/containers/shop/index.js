@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { fetchShop, fetchShopSuccess, fetchShopFailure } from '../../actions/shop';
 import { APAC, API } from '../../constants/config';
+import ShopItem from '../../components/shop-item';
 
 class Store extends Component {
   constructor(props) {
@@ -16,11 +17,17 @@ class Store extends Component {
 
   render() {
     const { shopType, items } = this.props;
+
     const renderShop = (
       <div className="shop-container" key={Math.random()}>
-        shop
+        {
+          items &&
+          items.map((item, i) => {
+            return <ShopItem item={item} index={i} />;
+          })
+        }
       </div>
-    )
+    );
 
     console.log(items);
 

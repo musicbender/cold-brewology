@@ -12,6 +12,7 @@ router.get('/get-shop/:type/:page', (req, res) => {
   APAC.execute('ItemLookup', {
     ItemId: products[req.params.type],
     idType: 'ASIN',
+    ResponseGroup: "Medium, ItemAttributes, Images",
   })
   .then((data) => {
     apiResponse(res, 200, 0, 'success', data);
