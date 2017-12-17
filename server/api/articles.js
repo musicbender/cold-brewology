@@ -44,6 +44,6 @@ router.post('/test-post', (req, res) => {
   });
 
   apiResponse(res, 200, 0, 'success', body);
-})
+});
 
 export default router;

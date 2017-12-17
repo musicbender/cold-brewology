@@ -6,8 +6,6 @@ export default (props) => {
   const { ListPrice, Title } = item.ItemAttributes;
   const image = item.MediumImage;
 
-  console.log(image.URL);
-
   return (
      <div className={`shop-item-container ${index}`}>
        <a className="title" href={item.DetailPageURL}>{Title}</a>

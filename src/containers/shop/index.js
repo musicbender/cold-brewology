@@ -23,7 +23,7 @@ class Store extends Component {
         {
           items &&
           items.map((item, i) => {
-            return <ShopItem item={item} index={i} />;
+            return <ShopItem item={item} index={i} key={Math.random()}/>;
           })
         }
       </div>
