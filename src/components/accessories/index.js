@@ -4,7 +4,7 @@ import Shop from '../../containers/shop';
 export default (props) => {
   return (
      <div>
-       <Shop />
+       <Shop shopType="accessories" />
      </div>
   );
 }

@@ -5,7 +5,7 @@ import { fetchShop, fetchShopSuccess, fetchShopFailure } from '../../actions/sho
 import { APAC, API } from '../../constants/config';
 import ShopItem from '../../components/shop-item';
 
-class Store extends Component {
+class Shop extends Component {
   constructor(props) {
     super(props);
   }
@@ -28,8 +28,6 @@ class Store extends Component {
         }
       </div>
     );
-
-    console.log(items);
 
     return (
       <div className={`shop-${shopType}`}>
@@ -65,4 +63,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Store));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Shop));
