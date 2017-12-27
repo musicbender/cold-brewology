@@ -24,3 +24,9 @@ export function fetchShopFailure(error) {
     payload: error,
   }
 }
+
+export function resetShop() {
+	return {
+		type: RESET_SHOP,
+	}
+}

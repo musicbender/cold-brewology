@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 import promise from 'redux-promise';
 import reducers from './reducers';
 import App from './containers/app';
-import './style/base.scss';
+import './style/main.scss';
 
 if (typeof window === undefined) {
 	global.window = {};

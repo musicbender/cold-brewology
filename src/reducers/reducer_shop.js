@@ -16,6 +16,9 @@ export default function shop(state = initialState.shop, action) {
     case FETCH_SHOP_FAILURE: {
       return { ...state, shopList: { items: null, error: action.payload, loading: false }}
     }
+		case RESET_SHOP: {
+			return { ...state, shopList: { items: null, error: null, loading: false }};
+		}
     default: {
       return state;
     }

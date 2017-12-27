@@ -23,31 +23,33 @@ $grey:         #BDBDBD;
 
 /*******Font*******/
 
-$extra-large:  3.5em;
-$very-large:   3em;
-$large:        2.2em;
-$medium:       1.5em;
-$small:        1em;
-$normal:       $small;
-$tiny:         0.8em;
-$title:        $large;
-$h1-size:      $extra-large;
-$p-size:       $small;
+$extra-large:   1.875rem;
+$very-large:    1.5rem;
+$large:         1.25rem;
+$medium-large:  1.125rem;
+$medium:        1rem;
+$medium-small:  0.875rem;
+$small:         0.75rem;
+$very-small:    0.625rem;
+
+$title:         $extra-large;
+$h1:            $extra-large;
+$p:             $medium;
 
 
 /*******Animation*******/
 
-$easeOut  :  cubic-bezier(0.23, 1, 0.32, 1);
+$easeOut   : cubic-bezier(0.23, 1, 0.32, 1);
 $easeIn    : cubic-bezier(0.950, 0.050, 0.795, 0.035);
 $easeInOut : cubic-bezier(0.445, 0.05, 0.55, 0.95);
-$slow:      750ms;
-$moderate:  450ms;
-$fast:      300ms;
+$slow:       750ms;
+$moderate:   450ms;
+$fast:       300ms;
 
 
 /******* Size *******/
 
-
+$site-max-width: 150rem;
 
 /******* Components *******/
 

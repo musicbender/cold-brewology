@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { fetchShop, fetchShopSuccess, fetchShopFailure } from '../../actions/shop';
+import { fetchShop, fetchShopSuccess, fetchShopFailure, resetShop } from '../../actions/shop';
 import { APAC, API } from '../../constants/config';
 import ShopItem from '../../components/shop-item';
 
@@ -12,11 +12,15 @@ class Shop extends Component {
 
   componentDidMount() {
     const { fetchShop, shopType } = this.props;
-    this.props.fetchShop(shopType, 1);
+    this.props.fetchShop(shopType, 0);
+  }
+
+  componentWillUnmount() {
+    this.props.resetShop();
   }
 
   render() {
-    const { shopType, items } = this.props;
+    const { shopType, items, loading, error } = this.props;
 
     const renderShop = (
       <div className="shop-container" key={Math.random()}>
@@ -32,6 +36,8 @@ class Shop extends Component {
     return (
       <div className={`shop-${shopType}`}>
         <h2>{shopType}</h2>
+        { loading && <p>Loading...</p> }
+        { error && error }
         { renderShop }
       </div>
     );
@@ -59,6 +65,9 @@ const mapDispatchToProps = dispatch => {
             dispatch(fetchShopSuccess(payload.data.data));
           }
         })
+    },
+    resetShop: () => {
+      dispatch(resetShop());
     }
   }
 }
