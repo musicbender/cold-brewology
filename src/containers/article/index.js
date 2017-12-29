@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { fetchArticle, fetchArticleSuccess, fetchArticleFailure } from '../../actions/articles';
+import { formatDate, stringifyDate } from '../../util/date';
 import './article.scss';
 
 class Article extends Component {
@@ -35,10 +36,12 @@ class Article extends Component {
       }
       case article !== null: {
         const { title, body, likes, hidden, author, date, comments } = article;
+        const dateString = stringifyDate(formatDate(date));
+
         return (
           <div className="article-wrapper">
             <h1>{title}</h1>
-            <h2>By {author} on {date}</h2>
+            <h2>By {author} / {dateString}</h2>
             <div className="article-likes">{`Likes: ${likes}`}</div>
             <div className="article-body" dangerouslySetInnerHTML={this.renderBody(body)}></div>
           </div>

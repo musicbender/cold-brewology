@@ -25,7 +25,7 @@ body {
   overflow: hidden;
 }
 
-// headers
+// text
 h1 {
   font-size: $h1;
   font-family: $cabin;
@@ -50,4 +50,9 @@ h5 {
 
 h6 {
   font-size: $h6;
+}
+
+p {
+  font-size: $p;
+  font-family: $cabin;
 }
