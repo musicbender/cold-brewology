@@ -4,8 +4,10 @@
 .articles-list {
   [class^="article-"] {
     @include box-shadow(2);
+    display: block;
     position: relative;
     margin: 1em;
     padding: 1em;
+    text-decoration: none;
   }
 }
