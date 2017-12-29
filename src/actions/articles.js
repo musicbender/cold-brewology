@@ -28,3 +28,25 @@ export function fetchArticlesFailure(error) {
     payload: error,
   }
 }
+
+export function fetchArticle(article) {
+	const request = API.get(`/get-article/${article}`);
+  return {
+    type: FETCH_ARTICLE,
+    payload: request,
+  }
+}
+
+export function fetchArticleSuccess(data) {
+  return {
+    type: FETCH_ARTICLE_SUCCESS,
+    payload: data,
+  }
+}
+
+export function fetchArticleFailure(error) {
+  return {
+    type: FETCH_ARTICLE_FAILURE,
+    payload: error,
+  }
+}

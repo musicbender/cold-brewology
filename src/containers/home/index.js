@@ -5,7 +5,6 @@ import Header from '../../components/main-header';
 import HomeCTABar from '../../components/home-cta-bar';
 import ArticleList from '../../components/article-list';
 import Footer from '../../components/footer';
-import axios from 'axios';
 import { fetchArticles, fetchArticlesSuccess, fetchArticlesFailure } from '../../actions/articles';
 import './home.scss';
 

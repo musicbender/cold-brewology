@@ -9,7 +9,9 @@ export default (props) => {
         articles.map((article,i) => {
           return (
             <div className={`article-${i + 1}`} key={Math.random()}>
-              <h2>{article.title}</h2>
+              <h2>
+                <a href={`/article/${article.title}`}>{article.title}</a>
+              </h2>
               <p>{article.date}</p>
               <p>{article.author}</p>
               <div dangerouslySetInnerHTML={{__html: article.body}}></div>

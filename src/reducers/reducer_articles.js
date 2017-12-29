@@ -19,6 +19,15 @@ export default function articles(state = initialState.articles, action) {
     case FETCH_ARTICLES_FAILURE: {
       return { ...state, articlesList: { articles: null, error: action.payload, loading: false }}
     }
+		case FETCH_ARTICLE: {
+      return { ...state, activeArticle: { article: null, error: null, loading: true }};
+    }
+    case FETCH_ARTICLE_SUCCESS: {
+      return { ...state, activeArticle: { article: action.payload, error: null, loading: false }};
+    }
+    case FETCH_ARTICLE_FAILURE: {
+      return { ...state, activeArticle: { article: null, error: action.payload, loading: false }}
+    }
     default: {
       return state;
     }
