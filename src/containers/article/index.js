@@ -11,25 +11,59 @@ class Article extends Component {
 
   componentDidMount() {
     const { fetchArticle, match } = this.props;
-    
+
     fetchArticle(match.params.article || window.location.pathname.slice(9));
+  }
+
+  renderBody(body) {
+    return { __html: body };
+  }
+
+  renderArticle() {
+    const { article, loading, error } = this.props;
+
+    switch (true) {
+      case loading: {
+        return (
+          <p>Loading...</p>
+        );
+      }
+      case error: {
+        return (
+          <p>{error}</p>
+        );
+      }
+      case article !== null: {
+        const { title, body, likes, hidden, author, date, comments } = article;
+        return (
+          <div className="article-wrapper">
+            <h1>{title}</h1>
+            <h2>By {author} on {date}</h2>
+            <div className="article-likes">{`Likes: ${likes}`}</div>
+            <div className="article-body" dangerouslySetInnerHTML={this.renderBody(body)}></div>
+          </div>
+        );
+      }
+      default:
+        return;
+    }
   }
 
   render() {
     return (
-      <div className="article">
-        ARTICLE HERE
-      </div>
+      <section className="article">
+        { this.renderArticle() }
+      </section>
     );
   }
 }
 
 const mapStateToProps = ({ articles }) => {
-  const { activeArticle: { article, error, loading }} = articles;
+  const { activeArticle } = articles;
   return {
-    article,
-    error,
-    loading,
+    article: activeArticle.article,
+    error: activeArticle.error,
+    loading: activeArticle.loading,
   }
 }
 
