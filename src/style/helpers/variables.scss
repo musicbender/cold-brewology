@@ -11,17 +11,22 @@ $small-mobile-width:    414px;
 $tablet-only:           "(min-width: #{$mobile-width}) and (max-width: #{$tablet-width})";
 
 
-/******* Greyscale *******/
+/******* Colors *******/
+$brown:        #643F00;
+$offwhite:     #FFF6EA;
+$subtle-brown: rgba(100,63,0,0.05);
 
 $white:        #fff;
 $black:        rgb(40,40,40);
 $matteblack:   #000;
-$offwhite:     #FAFAFA;
 $lightgrey:    #E0E0E0;
 $grey:         #BDBDBD;
 
 
 /*******Font*******/
+
+$robo:          'Robo Slab', serif;
+$cabin:         'Cabin', sans-serif;
 
 $extra-large:   1.875rem;
 $very-large:    1.5rem;
@@ -32,9 +37,16 @@ $medium-small:  0.875rem;
 $small:         0.75rem;
 $very-small:    0.625rem;
 
-$title:         $extra-large;
 $h1:            $extra-large;
+$h2:            $very-large;
+$h3:            $large;
+$h4:            $medium-large;
+$h5:            $medium-large;
+$h6:            $medium;
 $p:             $medium;
+
+$title:         $extra-large;
+$a-list-title:  $h3;
 
 
 /*******Animation*******/

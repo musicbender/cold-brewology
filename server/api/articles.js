@@ -28,6 +28,18 @@ router.get('/get-articles/:page', (req, res) => {
   });
 });
 
+router.get('/get-article/:article', (req, res) => {
+  Article.findOne({title: req.params.article})
+    .lean()
+    .exec((err, article) => {
+      if (err) {
+        apiResponse(res, 400, 1, 'error', err);
+      }
+
+      apiResponse(res, 200, 0, 'success', article);
+    });
+});
+
 router.post('/test-post', (req, res) => {
   const bodyFile = path.join(__dirname, '../views/posts/') + req.body.post_id + '.pug';
   const body = pug.renderFile(bodyFile);
