@@ -1,9 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { formatDate } from '../../util/date';
+import { articleConfig as config } from '../../constants/config';
 import './article-list.scss';
 
 export default (props) => {
   const { articles, error, loading } = props;
+
+  const stripHTML = html => {
+    return html.replace(/<(?:.|\n)*?>/gm, '');
+  }
+
+  const getPreview = (body) => {
+    const { previewMax } = config;
+    const preview = stripHTML(body);
+
+    return {__html: `${preview.length > previewMax ? preview.substring(0, previewMax) : preview}...`};
+  }
+
   const renderArticles = articles && (
     <div className="articles-list">
       {
@@ -11,11 +25,11 @@ export default (props) => {
           return (
             <Link to={`/article/${article.title}`} className={`article-${i + 1}`} key={Math.random()}>
               <h3>{article.title}</h3>
-              <p>{article.date}</p>
+              <p>{formatDate(article.date)}</p>
               <p>{article.author}</p>
-              <div dangerouslySetInnerHTML={{__html: article.body}}></div>
+              <div dangerouslySetInnerHTML={getPreview(article.body)}></div>
             </Link>
-          )
+          );
         })
       }
     </div>

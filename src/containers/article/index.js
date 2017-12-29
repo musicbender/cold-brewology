@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { fetchArticle, fetchArticleSuccess, fetchArticleFailure } from '../../actions/articles';
-import { formatDate, stringifyDate } from '../../util/date';
+import { formatDate } from '../../util/date';
 import './article.scss';
 
 class Article extends Component {
@@ -36,7 +36,7 @@ class Article extends Component {
       }
       case article !== null: {
         const { title, body, likes, hidden, author, date, comments } = article;
-        const dateString = stringifyDate(formatDate(date));
+        const dateString = formatDate(date);
 
         return (
           <div className="article-wrapper">

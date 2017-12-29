@@ -1,4 +1,4 @@
-const formatDate = (date) => {
+const formatDateObj = (date) => {
   const newDate = new Date(date);
   const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
   let amPm = 'am';
@@ -22,12 +22,13 @@ const formatDate = (date) => {
   }
 }
 
-const stringifyDate = (dateObj) => {
+const formatDate = (date) => {
+  const dateObj = formatDateObj(date);
   const { year, month, day, hour, minute, amPm } = dateObj;
   return `${month} ${day}, ${year} ${hour}:${minute}${amPm}`;
 }
 
 export {
   formatDate,
-  stringifyDate,
+  formatDateObj,
 }
