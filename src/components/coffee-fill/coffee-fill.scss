@@ -1,0 +1,9 @@
+@import '../../style/helpers/variables';
+@import '../../style/helpers/mixins';
+
+.coffee-fill-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba($brown, 0.2);
+}

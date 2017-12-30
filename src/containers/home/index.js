@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import Header from '../../components/main-header';
 import HomeCTABar from '../../components/home-cta-bar';
 import ArticleList from '../../components/article-list';
-import Footer from '../../components/footer';
+import CoffeeFill from '../../components/coffee-fill';
 import { fetchArticles, fetchArticlesSuccess, fetchArticlesFailure } from '../../actions/articles';
 import './home.scss';
 
@@ -21,6 +21,7 @@ class Home extends Component {
     const { articles, error, loading } = this.props;
     return (
       <article className="home">
+        <CoffeeFill /> 
         <Header />
         <HomeCTABar />
         <ArticleList
