@@ -9,7 +9,7 @@ export default (props) => {
       content.map((item, i) => {
         const path = item !== "home" ? `/${item}` : "/";
         return [
-          <li key={Math.random()}><NavLink to={path}>{item}</NavLink></li>,
+          <li key={Math.random()}><NavLink to={path} exact>{item}</NavLink></li>,
           <li key={Math.random()}>/</li>
         ];
       })

@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from 'react-dom';
+import { hydrate } from 'react-dom';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
@@ -40,4 +40,4 @@ const Index = () => (
 	</Provider>
 )
 
-render(<Index />, document.getElementById('app'));
+hydrate(<Index />, document.getElementById('app'));
