@@ -13,8 +13,8 @@ $tablet-only:           "(min-width: #{$mobile-width}) and (max-width: #{$tablet
 
 /******* Colors *******/
 $brown:        #643F00;
-$offwhite:     #FFF6EA;
-$subtle-brown: rgba(100,63,0,0.05);
+$offwhite:     #F3F0EC;
+$subtle-brown: rgba($brown, 0.05);
 
 $white:        #fff;
 $black:        rgb(40,40,40);

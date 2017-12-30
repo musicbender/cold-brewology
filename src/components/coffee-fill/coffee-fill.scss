@@ -5,5 +5,38 @@
   position: absolute;
   bottom: 0;
   width: 100%;
-  background-color: rgba($brown, 0.2);
+  background-color: rgba($brown, 0.15);
+  overflow: hidden;
+
+  > [class^="wave-"] {
+    $size: 210%;
+    position: absolute;
+    top: -276%;
+    left: -38%;
+    width: $size;
+    padding-top: $size;
+    border-radius: 43%;
+    background-color: $white;
+    margin-left: -250px;
+    margin-top: -250px;
+    transform-origin: 50% 48%;
+    animation-name: wave-spin;
+    animation-duration: 10000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+
+  > .wave-2 {
+    animation-duration: 6000ms;
+  }
+  > .wave-3 { animation-duration: 8000ms; }
+
+  @keyframes wave-spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 }

@@ -11,7 +11,7 @@
         box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
     }
 }
-@mixin super-center ($top: 50%, $left: 50%, $x: -50%, $y: -50%) {
+@mixin super-center ($left: 50%, $top: 50%, $x: -50%, $y: -50%) {
   position: absolute;
   top: $top;
   left: $left;
@@ -20,9 +20,18 @@
   transform: translate($x,$y);
 }
 
+@mixin aspect-ratio($width, $height) {
+  &:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+  }
+}
+
 /******* COMPONENTS *******/
 
-@mixin double-border ($pos) {
+@mixin double-border ($pos: 'after') {
   .double-border {
     content: '';
     position: absolute;
