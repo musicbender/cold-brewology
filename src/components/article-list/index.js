@@ -17,10 +17,8 @@ export default (props) => {
   }
 
   const renderArticleList = () => {
-    console.log('go...');
     switch(true) {
       case loading: {
-        console.log('loading');
         return (
           <p>Loading...</p>
         );
@@ -31,7 +29,6 @@ export default (props) => {
         );
       }
       case articles !== null: {
-        console.log(articles);
         return (
           articles.map((article,i) => {
             return (

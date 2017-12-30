@@ -1,13 +1,21 @@
 @import '../../style/helpers/variables';
 @import '../../style/helpers/mixins';
 
-.articles-list {
-  [class^="article-"] {
-    @include box-shadow(2);
-    display: block;
-    position: relative;
-    margin: 1em;
-    padding: 1em;
-    text-decoration: none;
+section.articles-list-section {
+  display: grid;
+  grid-template-columns: 1fr 85%;
+  grid-template-rows: 100%;
+  grid-template-areas: "measuring-lines article-list";
+  width: 100%;
+  .articles-list {
+    grid-area: article-list;
+    [class^="article-"] {
+      @include box-shadow(2);
+      display: block;
+      position: relative;
+      margin: 1em;
+      padding: 1em;
+      text-decoration: none;
+    }
   }
 }
