@@ -11,6 +11,7 @@
         box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
     }
 }
+
 @mixin super-center ($left: 50%, $top: 50%, $x: -50%, $y: -50%) {
   position: absolute;
   top: $top;
@@ -31,25 +32,27 @@
 
 /******* COMPONENTS *******/
 
-@mixin double-border ($pos: 'after') {
-  .double-border {
-    content: '';
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    height: $bold-border-height;
-    width: 100%;
-  }
+@mixin extra-border-inner () {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  height: $bold-border-height;
+  background-color: $brown;
+  width: 100%;
+}
 
+@mixin extra-border ($pos: 'after') {
+  $spacing: -0.75rem;
   @if $pos == 'after' {
     &:after {
-      @extend .double-border;
-      bottom: 0;
+      @include extra-border-inner();
+      bottom: $spacing;
     }
   } @else if $pos == 'before' {
     &:before {
-      @extend .double-border;
-      top: 0;
+      @include extra-border-inner();
+      top: $spacing;
     }
   }
 }
