@@ -1,8 +1,8 @@
 // base
 html, body {
   position: relative;
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  padding: 0px;
 }
 html {
   font-size: 16px;
@@ -18,7 +18,7 @@ body {
 }
 
 // main
-.main {
+main {
   width: 100%;
   max-width: $site-max-width;
   margin: 0 auto;

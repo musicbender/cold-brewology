@@ -39,12 +39,12 @@ class Article extends Component {
         const dateString = formatDate(date);
 
         return (
-          <div className="article-wrapper">
+          <article className="article-wrapper">
             <h1>{title}</h1>
             <h2>By {author} / {dateString}</h2>
             <div className="article-likes">{`Likes: ${likes}`}</div>
             <div className="article-body" dangerouslySetInnerHTML={this.renderBody(body)}></div>
-          </div>
+          </article>
         );
       }
       default:

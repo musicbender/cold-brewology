@@ -20,7 +20,7 @@ class Home extends Component {
   render() {
     const { articles, error, loading } = this.props;
     return (
-      <div className="home">
+      <article className="home">
         <Header />
         <HomeCTABar />
         <ArticleList
@@ -28,7 +28,7 @@ class Home extends Component {
           error={error}
           loading={loading}
         />
-      </div>
+      </article>
     );
   }
 }

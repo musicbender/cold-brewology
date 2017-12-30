@@ -24,12 +24,14 @@ class App extends Component {
     return (
       <div>
         <NavBar />
-        <Route exact path="/" component={Home} />
-        <Route path="/brewers" component={Brewers} />
-        <Route path="/books" component={Books} />
-        <Route path="/accessories" component={Accessories} />
-        <Route path="/article/:article" component={Article} />
-        <Route path="/post-tester" component={TestPost} />
+        <main>
+          <Route exact path="/" component={Home} />
+          <Route path="/brewers" component={Brewers} />
+          <Route path="/books" component={Books} />
+          <Route path="/accessories" component={Accessories} />
+          <Route path="/article/:article" component={Article} />
+          <Route path="/post-tester" component={TestPost} />
+        </main>
         <Footer />
       </div>
     );

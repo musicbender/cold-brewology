@@ -21,3 +21,26 @@
 }
 
 /******* COMPONENTS *******/
+
+@mixin double-border ($pos) {
+  .double-border {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    height: $bold-border-height;
+    width: 100%;
+  }
+
+  @if $pos == 'after' {
+    &:after {
+      @extend .double-border;
+      bottom: 0;
+    }
+  } @else if $pos == 'before' {
+    &:before {
+      @extend .double-border;
+      top: 0;
+    }
+  }
+}

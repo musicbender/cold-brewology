@@ -25,7 +25,7 @@ $grey:         #BDBDBD;
 
 /*******Font*******/
 
-$robo:          'Robo Slab', serif;
+$robo:          'Roboto Slab', serif;
 $cabin:         'Cabin', sans-serif;
 
 $extra-large:   2.75rem;
@@ -62,8 +62,10 @@ $fast:       300ms;
 /******* Size *******/
 
 $site-max-width: 150rem;
+$bold-border-height: 3px;
 
 /******* Components *******/
 
+$bold-border: $bold-border-height solid $brown;
 
 /******* Other *******/
