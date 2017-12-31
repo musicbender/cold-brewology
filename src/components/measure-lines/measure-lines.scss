@@ -1,0 +1,28 @@
+@import '../../style/helpers/variables';
+@import '../../style/helpers/mixins';
+
+.measure-lines-container {
+  $color: rgba($brown, 0.4);
+  $lineColor: rgba($brown, 0.15);
+  position: relative;
+  grid-area: measuring-lines;
+  > ul.measure-lines {
+    position: absolute;
+    width: 3rem;
+    top: 0;
+    right: 10%;
+    list-style: none;
+    > li.line {
+      position: relative;
+      height: 10rem;
+      color: $color;
+      &:before {
+        content: '';
+        @include super-center(-82%, 0.58rem);
+        height: 2px;
+        width: 4rem;
+        background-color: $lineColor;
+      }
+    }
+  }
+}

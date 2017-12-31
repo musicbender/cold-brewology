@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import MeasureLines from '../measure-lines';
 import { formatDate } from '../../util/date';
-import { stripHTML } from '../../util/util';
+import { stripHTML, formatTitle } from '../../util/util';
 import { articleConfig as config } from '../../constants/config';
 import './article-list.scss';
 
@@ -23,7 +23,7 @@ export default (props) => {
           <p>Loading...</p>
         );
       }
-      case error: {
+      case error !== null: {
         return (
           <p>{error}</p>
         );
@@ -31,19 +31,18 @@ export default (props) => {
       case articles !== null: {
         return (
           articles.map((article,i) => {
+            const { title, date, author, body } = article;
             return (
-              <Link to={`/article/${article.title}`} className={`article-${i + 1}`} key={Math.random()}>
-                <h3>{article.title}</h3>
-                <p>{formatDate(article.date)}</p>
-                <p>{article.author}</p>
-                <div dangerouslySetInnerHTML={getPreview(article.body)}></div>
+              <Link to={`/article/${title}`} className={`article-${i + 1}`} key={Math.random()}>
+                <h3>{formatTitle(title)} / <span>{author}</span></h3>
+                <p>{formatDate(date)}</p>
+                <div dangerouslySetInnerHTML={getPreview(body)}></div>
               </Link>
             );
           })
         );
       }
       default: {
-        console.log('default');
         return;
       }
     }

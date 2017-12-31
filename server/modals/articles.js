@@ -4,7 +4,7 @@ import CommentsSchema from './comments';
 const Schema = mongoose.Schema;
 
 const ArticleSchema = new Schema({
-  title:  String,
+  title: String,
   author: {
     type: String,
     default: 'Pat Jacobs'
@@ -12,6 +12,10 @@ const ArticleSchema = new Schema({
   date: {
     type: Date,
     default: Date.now
+  },
+  geekLevel: {
+    type: String,
+    default: 'Basic'
   },
   body: String,
   comments: [CommentsSchema],

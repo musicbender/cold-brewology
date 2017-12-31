@@ -1,5 +1,4 @@
 require('babel-core/register')();
-
 import jsdom from 'jsdom';
 
 // JSDOM will consume this and act as if we were in a browser
@@ -10,7 +9,6 @@ global.window = document.defaultView;
 window.document = document;
 global.navigator = window.navigator;
 global.location = window.location;
-global.$ = require('jquery')(window);
 
 // Prevent Mocha from compiling class
 function noop() {
