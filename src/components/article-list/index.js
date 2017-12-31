@@ -31,11 +31,14 @@ export default (props) => {
       case articles !== null: {
         return (
           articles.map((article,i) => {
-            const { title, date, author, body } = article;
+            const { title, date, author, body, geekLevel } = article;
             return (
               <Link to={`/article/${title}`} className={`article-${i + 1}`} key={Math.random()}>
                 <h3>{formatTitle(title)} / <span>{author}</span></h3>
-                <p>{formatDate(date)}</p>
+                <div className="info-container">
+                  <p>{formatDate(date)}</p>
+                  <p>Geek Level: <span>{geekLevel}</span></p>
+                </div>
                 <div dangerouslySetInnerHTML={getPreview(body)}></div>
               </Link>
             );
