@@ -13,7 +13,7 @@ export default (props) => {
     const { previewMax } = config;
     const preview = stripHTML(body);
 
-    return {__html: `${preview.length > previewMax ? preview.substring(0, previewMax) : preview}...`};
+    return `${preview.length > previewMax ? preview.substring(0, previewMax) : preview}...`;
   }
 
   const renderArticleList = () => {
@@ -34,12 +34,15 @@ export default (props) => {
             const { title, date, author, body, geekLevel } = article;
             return (
               <Link to={`/article/${title}`} className={`article-${i + 1}`} key={Math.random()}>
-                <h3>{formatTitle(title)} / <span>{author}</span></h3>
+                <h3 className="title">
+                  {formatTitle(title)} / <span className="author">{author}</span>
+                </h3>
                 <div className="info-container">
-                  <p>{formatDate(date)}</p>
-                  <p>Geek Level: <span>{geekLevel}</span></p>
+                  <p className="date">{formatDate(date)}</p>
+                  <p className="geek-level">Geek Level: <span>{geekLevel}</span></p>
                 </div>
-                <div dangerouslySetInnerHTML={getPreview(body)}></div>
+                <div className="image"></div>
+                <div className="preview">{getPreview(body)}</div>
               </Link>
             );
           })
