@@ -25,8 +25,12 @@ $grey:         #BDBDBD;
 
 /*******Font*******/
 
-$robo:          'Roboto Slab', serif;
-$cabin:         'Cabin', sans-serif;
+$main:          'futura';
+$futura:        $main;
+$serif:         'Roboto Slab', serif;
+$robo:          $serif;
+$sans-serif:    'Cabin', sans-serif;
+$cabin:         $sans-serif;
 
 $extra-large:   2.75rem;
 $very-large:    1.625rem;

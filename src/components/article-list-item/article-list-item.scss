@@ -1,0 +1,47 @@
+@import '../../style/helpers/variables';
+@import '../../style/helpers/mixins';
+
+[class^="article-"] {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 80%;
+  grid-template-areas:
+    "title title info"
+    "image preview preview";
+  position: relative;
+  margin: 1em;
+  padding: 1em;
+  text-decoration: none;
+  > .title {
+    grid-area: title;
+    font-family: $main;
+    font-weight: 700;
+    > .author {
+      font-family: $main;
+      font-weight: 200;
+    }
+  }
+  > .info-container {
+    grid-area: info;
+    > .date {
+      width: 100%;
+      font-family: $serif;
+      font-weight: 200;
+    }
+    > .geek-level {
+      width: 100%;
+      font-family: $serif;
+      font-weight: 700;
+      > span {
+        font-weight: 200;
+      }
+    }
+  }
+  > .image {
+    grid-area: image;
+  }
+  > .preview {
+    grid-area: preview;
+    font-family: $sans-serif;
+  }
+}

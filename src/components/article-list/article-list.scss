@@ -10,39 +10,5 @@ section.articles-list-section {
   min-height: 100rem;
   .articles-list {
     grid-area: article-list;
-    [class^="article-"] {
-      @include box-shadow(2);
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-template-rows: 1fr 80%;
-      grid-template-areas:
-        "title title info"
-        "image preview preview";
-      position: relative;
-      margin: 1em;
-      padding: 1em;
-      text-decoration: none;
-      .title {
-        grid-area: title;
-        .author {
-
-        }
-      }
-      .info-container {
-        grid-area: info;
-        .date {
-          width: 100%;
-        }
-        .geek-level {
-          width: 100%;
-        }
-      }
-      .image {
-        grid-area: image;
-      }
-      .preview {
-        grid-area: preview;
-      }
-    }
   }
 }

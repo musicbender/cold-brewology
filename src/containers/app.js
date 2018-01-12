@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Route, Switch, withRouter, Link } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 // Global Components
 import NavBar from '../components/nav-bar';
