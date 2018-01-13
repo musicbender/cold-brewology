@@ -2,8 +2,8 @@
 @import '../../style/helpers/mixins';
 
 .measure-lines-container {
-  $color: rgba($brown, 0.4);
-  $lineColor: rgba($brown, 0.15);
+  $color: rgba($brown, 0.3);
+  $lineColor: rgba($brown, 0.08);
   position: relative;
   grid-area: measuring-lines;
   > ul.measure-lines {
@@ -16,11 +16,13 @@
       position: relative;
       height: 10rem;
       color: $color;
+      font-family: $main;
+      font-size: $small;
       &:before {
         content: '';
         @include super-center(-82%, 0.58rem);
         height: 2px;
-        width: 4rem;
+        width: 3.8rem;
         background-color: $lineColor;
       }
     }
