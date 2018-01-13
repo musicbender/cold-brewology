@@ -12,7 +12,7 @@ const API = axios.create({
 });
 
 const articleConfig = {
-  previewMax: 200
+  previewMax: 375,
 }
 
 export {

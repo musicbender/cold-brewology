@@ -19,7 +19,7 @@ const config = {
   output: {
     path: path.join(__dirname, '/dist'),
     filename: 'dist.js',
-    publicPath: 'http://localhost:3001',
+    publicPath: 'http://localhost:3001/',
   },
   module: {
     rules: [
@@ -40,7 +40,10 @@ const config = {
       },
       {
         test: /\.(eot|svg|ttf|woff|woff2)$/,
-        loader: 'file-loader?name=/fonts/[name].[ext]'
+        loader: 'file-loader?name=[path][name].[ext]'
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i, loader: "file-loader?name=[path][name].[ext]"
       },
       {
         test: /\.pug/,

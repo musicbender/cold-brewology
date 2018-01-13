@@ -43,7 +43,15 @@ const config = {
         },
         publicPath: "../public",
       }),
-    }],
+    },
+    {
+      test: /\.(eot|svg|ttf|woff|woff2)$/,
+      loader: 'file-loader?name=[path][name].[ext]'
+    },
+    {
+      test: /\.(jpe?g|png|gif|svg)$/i, loader: "file-loader?name=[path][hash].[ext]"
+    },
+    ],
   },
   plugins: [
     new webpack.DefinePlugin({

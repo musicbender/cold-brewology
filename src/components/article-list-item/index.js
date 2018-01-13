@@ -23,8 +23,8 @@ export default (props) => {
           <p className="geek-level">Geek Level: <span>{geekLevel}</span></p>
           <p className="date">{formatDate(date)}</p>
         </div>
-        <div className="image"></div>
-        <div className="preview">{getPreview(body)}</div>
+        <img src={require('../../assets/article-list/article-list-item.jpg')} />
+        <p className="preview">{getPreview(body)}</p>
       </Link>
   );
 }
