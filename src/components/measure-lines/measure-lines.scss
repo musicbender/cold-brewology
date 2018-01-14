@@ -18,12 +18,19 @@
       color: $color;
       font-family: $main;
       font-size: $small;
-      &:before {
+      &:before,
+      &:after {
         content: '';
-        @include super-center(-82%, 0.58rem);
         height: 2px;
-        width: 3.8rem;
         background-color: $lineColor;
+      }
+      &:before {
+        @include super-center(-82%, 0.58rem);
+        width: 3.8rem;
+      }
+      &:after {
+        @include super-center(-82%, 51%);
+        width: 2.8rem;
       }
     }
   }
