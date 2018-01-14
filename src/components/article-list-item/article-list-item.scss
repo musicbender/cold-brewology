@@ -2,6 +2,7 @@
 @import '../../style/helpers/mixins';
 
 [class^="article-"] {
+  $start-point: 1rem;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 80%;
@@ -12,11 +13,26 @@
   margin: 1rem 1rem 2rem;
   padding: 1rem;
   text-decoration: none;
+  background-color: rgba($brown, 0);
+  transition: transform $fast $easeOut;
+  &:hover {
+    background-color: rgba($brown, 0.1);
+    transition: transform $fast $easeOut;
+    > .title,
+    > .info-container,
+    > img,
+    > .preview {
+      transform: translateY(0);
+      transition: transform $fast $easeOut;
+    }
+  }
   > .title {
     grid-area: title;
     margin: 0 0 2.5rem 0;
     font-family: $main;
     font-weight: 700;
+    transform: translateY($start-point);
+    transition: transform $fast $easeOut;
     > .author {
       font-family: $main;
       font-weight: 200;
@@ -25,28 +41,36 @@
   > .info-container {
     grid-area: info;
     padding-left: 5.25rem;
+    transform: translateY($start-point);
+    transition: transform $fast $easeOut;
     > .date {
       margin: 0;
       width: 100%;
       font-family: $serif;
       font-weight: 200;
+      text-align: right;
     }
     > .geek-level {
       margin: 0;
       width: 100%;
       font-family: $serif;
       font-weight: 700;
+      text-align: right;
       > span {
         font-weight: 200;
       }
     }
   }
-  > .image {
+  > img {
     grid-area: image;
+    transform: translateY($start-point);
+    transition: transform $fast $easeOut;
   }
   > .preview {
     grid-area: preview;
     margin: 0;
     font-family: $sans-serif;
+    transform: translateY($start-point);
+    transition: transform $fast $easeOut;
   }
 }
